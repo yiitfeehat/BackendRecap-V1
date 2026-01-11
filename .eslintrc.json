@@ -1,0 +1,17 @@
+{
+  "env": {
+    "node": true /* Node.js ortamındayız */,
+    "es2021": true /* Modern JS kullanıyoruz */
+  },
+  "extends": [
+    "eslint:recommended" /* ESLint'in önerilen kurallarını aç */,
+    "plugin:prettier/recommended" /* Prettier ile çakışan kuralları kapat */
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12
+  },
+  "rules": {
+    "no-console": "warn" /* console.log görürsen uyarı ver (error değil) */,
+    "no-unused-vars": "warn" /* Kullanılmayan değişken varsa uyar */
+  }
+}
