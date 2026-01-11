@@ -3,7 +3,7 @@ const APIError = require("../utils/APIError");
 const errorHandler = (err, req, res, next) => {
     // Hata objesinin kopyasını alalım (üzerinde değişiklik yapacağız)
     let error = { ...err };
-    
+
     // JS Error nesnesinin 'message' özelliği enumerable olmadığı için kopyalanmaz, elle alalım
     error.message = err.message;
 
@@ -31,12 +31,13 @@ const errorHandler = (err, req, res, next) => {
     }
 
     // 4. JWT Hataları (Token geçersiz veya süresi dolmuş)
-    if (err.name === "JsonWebTokenError") {
+    if (err.name === 'JsonWebTokenError') {
         error = new APIError("Geçersiz token. Lütfen tekrar giriş yapın.", 401);
     }
     if (err.name === "TokenExpiredError") {
         error = new APIError("Oturum süreniz doldu. Lütfen tekrar giriş yapın.", 401);
     }
+    // Bu kodu kopyala yapıştır (Bilerek çift tırnak ve bozuk boşluklar koyduk)
 
     res.status(error.statusCode || 500).json({
         success: false,
@@ -44,6 +45,6 @@ const errorHandler = (err, req, res, next) => {
         // Stack trace sadece development ortamında görünsün
         stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
     });
-};
+}
 
 module.exports = errorHandler;
