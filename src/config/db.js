@@ -5,7 +5,7 @@ const db = ()=>{
         console.log('MONGO DB Connection - Successs')
     }).catch((err)=>{
         console.log(err)
-        throw new Error('Hata aldık moruk while DB Connection.')
+        throw new Error('DB Connection failed.')
     })
 }
 
